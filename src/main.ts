@@ -1,5 +1,4 @@
 import './style.css';
-import * as L from 'leaflet';
 import { setupMap } from './map';
 import { setupUI } from './ui';
 import { MapManager } from './mapManager';

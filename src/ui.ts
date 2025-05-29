@@ -1,8 +1,8 @@
 import * as L from 'leaflet';
 import { MapManager } from './mapManager';
 import { ApiService } from './apiService';
-import { Point, Strategy } from './types';
-import { createDistributionCenterIcon, createDeliveryPointIcon, createRouteLine, animateRoute, createRouteLineWithArrows } from './map';
+import { Point } from './types';
+import { createDistributionCenterIcon, createDeliveryPointIcon, animateRoute, createRouteLineWithArrows } from './map';
 
 export function setupUI(map: L.Map, mapManager: MapManager, apiService: ApiService): void {
   // DOM Elements
@@ -216,7 +216,7 @@ export function setupUI(map: L.Map, mapManager: MapManager, apiService: ApiServi
     const deliveryPoints = mapManager.getDeliveryPoints();
     
     // For each point, create a bar in the chart
-    deliveryPoints.forEach((point, index) => {
+    deliveryPoints.forEach((_, index) => {
       // Create a bar with height proportional to something (here we use a random value)
       // In a real app, this would be actual data from the solution
       const value = data.pointData?.[index]?.value || Math.random() * 80 + 20;

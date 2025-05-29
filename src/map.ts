@@ -1,6 +1,5 @@
 import * as L from 'leaflet';
 import 'leaflet-polylinedecorator';
-import { MapManager } from './mapManager';
 
 // Fix Leaflet icon paths
 fixLeafletIconPaths();
@@ -65,13 +64,14 @@ export function createRouteLineWithArrows(coordinates: L.LatLngExpression[], map
 }
 
 // Adiciona decoradores de seta para mostrar o sentido da rota
-export function addArrowsToRoute(map: L.Map, polyline: L.Polyline): L.PolylineDecorator {
-  // @ts-ignore - PolylineDecorator não tem tipagem TS incluída
+export function addArrowsToRoute(map: L.Map, polyline: L.Polyline): any {
+  // @ts-ignore - PolylineDecorator não tem tipagem TS incluída corretamente
   const decorator = L.polylineDecorator(polyline, {
     patterns: [
       {
         offset: '10%',
         repeat: '20%',
+        // @ts-ignore - Symbol também não está adequadamente tipado
         symbol: L.Symbol.arrowHead({
           pixelSize: 12,
           polygon: true,

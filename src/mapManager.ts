@@ -1,5 +1,5 @@
 import * as L from 'leaflet';
-import { Point, Strategy } from './types';
+import { Point } from './types';
 
 export class MapManager {
   private distributionCenter: Point | null = null;
