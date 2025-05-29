@@ -5,9 +5,14 @@ import { MapManager } from './mapManager';
 // Fix Leaflet icon paths
 fixLeafletIconPaths();
 
-export function setupMap(containerId: string): L.Map {
+export function setupMap(
+  containerId: string, 
+  defaultLat: number = -3.7681, 
+  defaultLng: number = -38.4780, 
+  defaultZoom: number = 18
+): L.Map {
   // Create map instance
-  const map = L.map(containerId).setView([-3.7681, -38.4780], 18); // UNIFOR, Fortaleza as default
+  const map = L.map(containerId).setView([defaultLat, defaultLng], defaultZoom);
 
   // Add OpenStreetMap tile layer
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -5,9 +5,9 @@ export class ApiService {
   private apiUrl: string;
   private strategiesUrl: string;
   
-  constructor(apiUrl: string) {
+  constructor(apiUrl: string, strategiesUrl?: string) {
     this.apiUrl = apiUrl;
-    this.strategiesUrl = apiUrl.replace('/solve', '/strategies');
+    this.strategiesUrl = strategiesUrl || apiUrl.replace('/solve', '/strategies');
   }
   
   // Fetch available strategies
