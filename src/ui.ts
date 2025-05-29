@@ -34,6 +34,14 @@ export function setupUI(map: L.Map, mapManager: MapManager, apiService: ApiServi
       // Clear loading option
       strategySelect.innerHTML = '';
       
+      // Add default placeholder option
+      const defaultOption = document.createElement('option');
+      defaultOption.value = "";
+      defaultOption.textContent = "Selecione a estratégia";
+      defaultOption.disabled = true;
+      defaultOption.selected = true;
+      strategySelect.appendChild(defaultOption);
+      
       // Add options for each strategy
       strategies.forEach(strategy => {
         const option = document.createElement('option');

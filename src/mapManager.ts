@@ -68,9 +68,11 @@ export class MapManager {
   
   // Check if we have enough points to calculate a route
   canCalculateRoute(): boolean {
-    return this.distributionCenter !== null && 
-           this.deliveryPoints.length > 0 && 
-           this.selectedStrategy !== '';
+    return (
+      this.distributionCenter !== null &&
+      this.deliveryPoints.length > 0 &&
+      this.selectedStrategy !== ''
+    );
   }
   
   // Generate route calculation payload
