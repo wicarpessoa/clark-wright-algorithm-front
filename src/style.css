@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Additional Custom Styles */
+.point-item {
+  @apply flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100 transition-colors duration-200;
+}
+
+.point-item .remove-btn {
+  @apply text-gray-400 hover:text-error transition-colors duration-200;
+}
+
+/* Leaflet custom styles */
+.custom-div-icon {
+  @apply flex items-center justify-center text-white rounded-full text-xs font-bold;
+}
+
+.distribution-center-icon {
+  @apply bg-primary w-8 h-8 border-2 border-white shadow-lg;
+}
+
+.delivery-point-icon {
+  @apply bg-secondary w-6 h-6 border-2 border-white shadow-md;
+}
+
+/* Mobile sidebar animation */
+@media (max-width: 768px) {
+  #sidebar {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #sidebar.hidden-sidebar {
+    transform: translateY(calc(100% - 60px));
+  }
+}

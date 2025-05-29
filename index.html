@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planejador de Rotas Logísticas</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <div id="app" class="flex flex-col h-screen md:flex-row">
+      <!-- Sidebar -->
+      <div id="sidebar" class="bg-white p-4 shadow-md w-full md:w-80 md:h-screen overflow-y-auto">
+        <h1 class="text-2xl font-bold text-primary mb-4">Planejador de Rotas</h1>
+        
+        <div class="mb-6">
+          <h2 class="text-lg font-semibold mb-2 flex items-center">
+            <span class="w-4 h-4 bg-primary rounded-full mr-2"></span>
+            Centro de Distribuição
+          </h2>
+          <div id="distribution-center-list" class="pl-6 space-y-2">
+            <p id="no-cd-message" class="text-gray-500 italic">Nenhum CD selecionado</p>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <h2 class="text-lg font-semibold mb-2 flex items-center">
+            <span class="w-4 h-4 bg-secondary rounded-full mr-2"></span>
+            Pontos de Entrega
+          </h2>
+          <div id="delivery-points-list" class="pl-6 space-y-2">
+            <p id="no-delivery-points-message" class="text-gray-500 italic">Nenhum ponto de entrega selecionado</p>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h2 class="text-lg font-semibold mb-2 flex items-center">
+            <span class="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+            Estratégia de Roteamento
+          </h2>
+          <div class="pl-6">
+            <select id="strategy-select" class="w-full p-2 border border-gray-300 rounded shadow-sm focus:border-blue-500 focus:outline-none">
+              <option value="" disabled selected>Carregando estratégias...</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="space-y-3">
+          <button id="calculate-route-btn" disabled class="w-full bg-route text-white font-semibold py-2 px-4 rounded shadow-md transition-all duration-300 opacity-50 cursor-not-allowed hover:bg-green-600">
+            Calcular Rota
+          </button>
+          <button id="reset-map-btn" class="w-full bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded shadow-md transition-all duration-300 hover:bg-gray-300">
+            Resetar Mapa
+          </button>
+        </div>
+        
+        <div id="route-info" class="mt-4 hidden">
+          <h3 class="text-lg font-semibold mb-2">Informações da Rota</h3>
+          <div class="bg-gray-50 p-3 rounded border border-gray-200">
+            <div id="route-data" class="text-sm"></div>
+            <div id="route-chart" class="mt-3 h-48"></div>
+          </div>
+        </div>
+        
+        <div class="mt-6 border-t pt-4">
+          <h3 class="text-sm font-medium mb-2">Instruções:</h3>
+          <ul class="text-sm text-gray-600 space-y-1 list-disc pl-5">
+            <li>Clique no mapa para definir o Centro de Distribuição (primeiro clique)</li>
+            <li>Continue clicando para adicionar Pontos de Entrega</li>
+            <li>Selecione uma estratégia de roteamento</li>
+            <li>Clique em "Calcular Rota" para determinar o melhor caminho</li>
+            <li>Remova pontos clicando no ícone de remoção na lista</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Map Container -->
+      <div id="map-container" class="flex-grow h-[60vh] md:h-screen"></div>
+      
+      <!-- Mobile Toggle Button -->
+      <button id="toggle-sidebar" class="md:hidden fixed bottom-4 right-4 bg-white p-3 rounded-full shadow-lg z-[1000]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
