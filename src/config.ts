@@ -1,5 +1,5 @@
 // Environment configuration
-const API_HOST = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const API_HOST = import.meta.env.VITE_API_URL || 'http://54.152.24.181:8080';
 
 // Export configuration constants
 export const API_URL = `${API_HOST}/solve`;
